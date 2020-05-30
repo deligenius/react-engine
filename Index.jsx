@@ -1,7 +1,5 @@
 // ./Index.jsx
-// import {React} from "https://raw.githubusercontent.com/deligenius/react-engine/master/react.ts"
-import React from "./react.ts"
-
+import React from "https://raw.githubusercontent.com/deligenius/react-engine/master/react.ts"
 const Index = (props) => {
   return (
     <div>

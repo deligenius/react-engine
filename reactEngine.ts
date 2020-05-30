@@ -1,5 +1,6 @@
-import React from './react.ts'
-import ReactDOMServer from './react-dom-server.ts'
+import React from "./react.ts";
+import ReactDOMServer from "./react-dom-server.ts";
+import { join } from "https://deno.land/std/path/posix.ts";
 
 import {
   parse,
@@ -8,7 +9,7 @@ import {
 
 async function getReactComponent(path: string): React.Component {
   try {
-    let component = (await import(path)).default;
+    let component = (await import(join("./", path))).default;
     return component;
   } catch (e) {
     console.log(e);
@@ -50,4 +51,3 @@ export async function reactEngine(
   return resultHtml;
 }
 
-// console.log(await reactEngine("./src/index.jsx", { data: { name: "jun" } }));
