@@ -1,13 +1,7 @@
-// @deno-types="./node_modules/@types/react/index.d.ts"
-import { React } from "https://raw.githubusercontent.com/deligenius/react-engine/master/mod.ts";
-// @deno-types="./node_modules/@types/react-dom/server/index.d.ts"
-import {
-  ReactDOMServer,
-} from "https://raw.githubusercontent.com/deligenius/react-engine/master/mod.ts";
+import React from './react.ts'
+import ReactDOMServer from './react-dom-server.ts'
 
 import {
-  basename,
-  extname,
   parse,
   join,
 } from "https://deno.land/std/path/posix.ts";
@@ -43,7 +37,7 @@ function renderHtml(htmlPath: string, renderString: string): string {
   }
 }
 
-async function reactEngine(
+export async function reactEngine(
   filePath: string,
   data: object,
   htmlPath?: string,
@@ -56,4 +50,4 @@ async function reactEngine(
   return resultHtml;
 }
 
-console.log(await reactEngine("./src/index.tsx", { data: { name: "jun" } }));
+// console.log(await reactEngine("./src/index.jsx", { data: { name: "jun" } }));
