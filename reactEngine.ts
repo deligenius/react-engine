@@ -6,13 +6,16 @@ import {
   join,
 } from "https://deno.land/std/path/posix.ts";
 
-async function getReactComponent(path: string): React.Component {
+async function getReactComponent(importPath: string): React.Component {
   try {
-    let component = (await import(join("./", path))).default;
+    importPath = importPath.startsWith("./")
+      ? importPath
+      : "." + join("/", importPath);
+    let component = (await import(importPath)).default;
     return component;
   } catch (e) {
     console.log(e);
-    throw new Error("reactengine - load component failed:" + path);
+    throw new Error("reactengine - load component failed:" + importPath);
   }
 }
 
@@ -49,4 +52,3 @@ export async function reactEngine(
   let resultHtml = renderHtml(join(file.dir, htmlFile), renderStr);
   return resultHtml;
 }
-
