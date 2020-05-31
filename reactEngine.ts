@@ -6,11 +6,18 @@ import {
   join,
 } from "https://deno.land/std/path/posix.ts";
 
+// import { parse, join } from "https://deno.land/std/path/mod.ts";
+
+function currentPath() {
+  let localPath = Deno.cwd().replace(/\\/g, "/");
+  return localPath;
+}
+
 async function getReactComponent(importPath: string): React.Component {
+  let cwd = currentPath();
+
   try {
-    importPath = importPath.startsWith("./")
-      ? importPath
-      : "." + join("/", importPath);
+    importPath = "file://" + join(cwd, importPath);
     let component = (await import(importPath)).default;
     return component;
   } catch (e) {
