@@ -1,6 +1,5 @@
 import React from "./react.ts";
 import ReactDOMServer from "./react-dom-server.ts";
-import { join } from "https://deno.land/std/path/posix.ts";
 
 import {
   parse,
