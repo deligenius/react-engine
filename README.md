@@ -66,10 +66,19 @@ export default Index;
 
  2.  React engine will first load React component ```Index.jsx``` then render with ```{data: {name: "John"}```, finally it will be injected into ```Index.html``` as ```{{root}}```
 
+ - Notice: the file name ```Index.jsx``` and ```Index.html``` must be identical.
+
 This is the **key argument** you need to care: 
 ```ts
 // ./app.ts
 const html = await reactEngine("./Index.jsx", {data: {name: "John"} })
+```
+then make sure {{root}} is in place
+```html
+<!-- ./Index.html -->
+<body>
+  {{root}}
+</body>
 ```
  
  3. Run with command:
@@ -106,7 +115,7 @@ To render a tsx, you need a small tweak, first create a file ```./tsconfig.json`
 
 Then run with compiler option: ```-c ./tsconfig.json```
 ```ts
-> deno run --allow-read --allow-net -c ./tsconfig.json ./app.ts```
+> deno run --allow-read --allow-net -c ./tsconfig.json ./app.ts
 ```
 
 
