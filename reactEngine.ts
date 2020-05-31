@@ -8,13 +8,13 @@ import {
 
 // import { parse, join } from "https://deno.land/std/path/mod.ts";
 
-function currentPath() {
+function currentDir() {
   let localPath = Deno.cwd().replace(/\\/g, "/");
   return localPath;
 }
 
 async function getReactComponent(importPath: string): React.Component {
-  let cwd = currentPath();
+  let cwd = currentDir();
 
   try {
     importPath = "file://" + join(cwd, importPath);
