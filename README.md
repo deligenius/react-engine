@@ -7,6 +7,7 @@
 [![tag](https://img.shields.io/badge/deno-v1.0.2-green.svg)](https://github.com/denoland/deno)
 
 ---
+#### Note: React Engine can perfectly render ```props``` in JSX/TSX file, but events(eg, onClick, onChange) won't work at current release
 
 ### Usage
 
